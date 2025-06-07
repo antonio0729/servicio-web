@@ -1,6 +1,12 @@
 from flask import Flask, jsonify, request, abort
+import os
 
 app = Flask(__name__)
+
+# Ruta de bienvenida
+@app.route("/")
+def home():
+    return "Bienvenido a la API de usuarios"
 
 # Datos en memoria (lista de dicts)
 tasks = [
@@ -57,4 +63,5 @@ def delete_task(task_id):
     return '', 204
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 10000))  # Usa el puerto que Render asigna
+    app.run(host="0.0.0.0", port=port)
