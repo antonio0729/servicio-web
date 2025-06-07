@@ -56,5 +56,5 @@ def delete_task(task_id):
     tasks = [t for t in tasks if t['id'] != task_id]
     return '', 204
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
